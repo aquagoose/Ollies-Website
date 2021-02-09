@@ -1,0 +1,23 @@
+body {
+    margin: 0 auto;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-family: Arial, serif;
+}
+
+#wrapper {
+    background-color: #151515;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: orange;
+}
+
+a:hover {
+    text-decoration: underline;
+}
