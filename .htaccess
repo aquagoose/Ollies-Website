@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /new-website/$1 [L,R]
+RewriteRule ^([A-Za-z0-9-]+)/?$ ?p="$1" [NC]
