@@ -1,3 +1,5 @@
+/* MAIN.CSS - Used for the main bulk of the website. */
+
 body {
     margin: 0 auto;
     text-align: center;
@@ -7,7 +9,7 @@ body {
 }
 
 #wrapper {
-    background-color: #151515;
+    background-color: #151515; /* This colour is nice. */
     margin: 5px;
     padding: 5px;
     font-size: 20px;
@@ -15,7 +17,7 @@ body {
 
 a {
     text-decoration: none;
-    color: orange;
+    color: orange; /* Links should be orange because yes. */
 }
 
 a:hover {

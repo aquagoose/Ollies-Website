@@ -72,4 +72,10 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+# If you're looking at this, it's probably this file you're looking for.
+# Sure you can visit it on the website, it's not hidden. But it will just be a blank page.
+# Now now, this *doesn't* contain the details to the database, no no, those details are stored
+# in a folder that is WELL out of reach of anyone except myself. Heck, even writing to it is a pain
+# in the a**.. This file just contains the location of the file that contains the details.
+# Adds an extra layer of security.
 database.php
