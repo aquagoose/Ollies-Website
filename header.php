@@ -1,3 +1,8 @@
+<meta property="og:title" content="Ollie's Website">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.ollierobinson.co.uk/new-website/">
+<meta property="og:description" content="Ollie's Website. Shhhhhhhhhh......">
+<meta name="theme-color" content="#FFA500">
 <link rel="stylesheet" type="text/css" href="Styles/header.css">
 <div id="header">
     <div id="headerleft">
