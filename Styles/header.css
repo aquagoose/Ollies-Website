@@ -1,4 +1,11 @@
-/* HEADER.CSS - Used for the header section */
+/* HEADER.CSS - Used for the header & footer section */
+
+/* HEADER */
+
+#header {
+    border-bottom: 5px solid black;
+    margin-bottom: 5px;
+}
 
 #header.a {
     font-size: 100px; /* I-uh.. What? */
@@ -54,4 +61,28 @@ a.menu:hover {
 #htext { /* This does something */
     display: inline-block;
     vertical-align: middle;
+}
+
+/* END OF HEADER */
+
+/* FOOTER */
+
+#footer {
+    width: 100%;
+}
+
+#footerleft {
+    display: inline-block;
+    width: 49%;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+#footerright {
+    display: inline-block;
+    width: 49%;
+    text-align: right;
+    vertical-align: middle;
+    font-size: 15px;
 }

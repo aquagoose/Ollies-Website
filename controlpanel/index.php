@@ -17,5 +17,6 @@ include "../redirect.php";
                 <a href="editor.php">Editor</a><br />
             </div> <!-- End of text div -->
         </div> <!-- End of wrapper -->
+        <?php include "../footer.php"; ?>
     </body>
 </html>

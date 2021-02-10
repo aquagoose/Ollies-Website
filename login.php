@@ -34,5 +34,6 @@ if (isset($_POST['username'])) { // Only runs if a username value exists.
             </form>
             <div id="errortext"><?php echo $errorMessage; ?></div>
         </div>
+        <?php include "footer.php"; ?>
     </body>
 </html>

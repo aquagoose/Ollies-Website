@@ -1,5 +1,6 @@
 /* MAIN.CSS - Used for the main bulk of the website. */
 
+
 body {
     margin: 0 auto;
     text-align: center;
@@ -11,8 +12,12 @@ body {
 #wrapper {
     background-color: #151515; /* This colour is nice. */
     margin: 5px;
-    padding: 5px;
+    /*padding: 5px;*/
+    padding-top: 5px;
     font-size: 20px;
+    min-height: calc(100vh - 45px); /* 45px being the total padding top-bottom (10px, 5px top, 5px bottom) plus the height of the footer (35px) */
+    box-sizing: border-box;
+    border-radius: 20px;
 }
 
 a {
@@ -37,10 +42,16 @@ input {
 
 input[type=submit], input[type=button].important {
     background-color: #FFA500;
+    cursor: pointer;
 }
 
 input[type=button] {
     background-color: gray;
+    cursor: pointer;
+}
+
+input[type=button]:hover, input[type=submit]:hover {
+    cursor: pointer;
 }
 
 #errortext {
@@ -88,4 +99,15 @@ a.topbarlink {
     width: 50%;
     min-width: 750px;
     margin: 0px auto;
+}
+
+/* TABLES */
+table {
+    margin: 0px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px 10px;
+    border-bottom: 2px solid black;
 }

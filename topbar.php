@@ -6,8 +6,8 @@ if (include "checkauth.php") { ?>
         <span>Hi <b><?php echo $_SESSION["username"]; ?>! 👋</b></span>
     </div>
     <div id="topbarright">
-        <a class="topbarlink" href="./controlpanel/index.php">Control Panel</a>
-        <a class="topbarlink" href="./logout.php?redirect_to=<?php echo $_SERVER['REQUEST_URI']; ?>">Log out</a>
+        <a class="topbarlink" href="/new-website/controlpanel/index.php">Control Panel</a>
+        <a class="topbarlink" href="/new-website/logout.php?redirect_to=<?php echo $_SERVER['REQUEST_URI']; ?>">Log out</a>
     </div>
 </div>
 <?php } ?>

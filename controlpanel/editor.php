@@ -1,5 +1,19 @@
 <?php
 include "../redirect.php";
+$html = "";
+$pageTitle = "";
+$uniqueTitle = "";
+if (isset($_GET['p'])) {
+    $pageID = $_GET['p'];
+    $conn = include "../database.php";
+    $result = $conn -> query("SELECT * FROM `pages` WHERE `ID`=$pageID");
+    if ($result -> num_rows == 1) {
+        $row = $result -> fetch_assoc();
+        $html = addslashes($row['body']);
+        $pageTitle = $row['page-title'];
+        $uniqueTitle = $row['unique-title'];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,19 +31,25 @@ include "../redirect.php";
         <div id="wrapper">
             <?php include "../header.php" ?>
             <div id="text">
-                <input type="text" placeholder="Page Title">
-                <input type="text" placeholder="Unique Title">
+                <input type="text" placeholder="Page Title" value="<?php echo $pageTitle; ?>">
+                <input type="text" placeholder="Unique Title" value="<?php echo $uniqueTitle; ?>">
                 <input type="button" class="important" value="Save" onclick="saveContent()">
                 <input type="button" value="Preview" onclick="preview()">
                 <div id="editorjs"></div>
                 <script>
-                    const editor = new EditorJS({
-                        holder: 'editorjs',
-                        tools: {
-                            header: Header,
-                            linkTool: LinkTool,
-                        },
-                    });
+                    let html = "<?php echo $html; ?>";
+                    let editor;
+
+                    window.onload = async function() {
+                        editor = new EditorJS({
+                            holder: 'editorjs',
+                            tools: {
+                                header: Header,
+                                linkTool: LinkTool,
+                            },
+                            data: (html !== "") ? await ParseHtmlToEditorFormat(html) : {},
+                        });
+                    }
 
                     function saveContent() {
                         ParseEditorToHtml(editor);
@@ -37,10 +57,12 @@ include "../redirect.php";
 
                     async function preview() {
                         const html = await ParseEditorToHtml(editor);
-                        window.open(`preview.php?html=${html}`)
+                        const pageTitle = "<?php echo $pageTitle; ?>";
+                        window.open(`preview.php?ptitle=${pageTitle}&html=${html}`)
                     }
                 </script>
             </div>
         </div>
+        <?php include "../footer.php"; ?>
     </body>
 </html>
