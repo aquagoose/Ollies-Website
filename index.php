@@ -13,13 +13,14 @@
 <html lang="en-GB">
     <head>
         <title>Ollie's Website</title>
-        <link rel="stylesheet" type="text/css" href="Styles/main.css">
+        <link rel="stylesheet" type="text/css" href="/new-website/Styles/main.css">
     </head>
     <body>
         <?php include "topbar.php"; ?>
-        <div id="wrapper">
+        <div id="wrapper"> <!-- Wraps around the webpage, the "frame" of it. -->
             <?php
             include "header.php";
+            echo "<div id=\"text\"> <!-- Where text is displayed -->";
             $conn = include "database.php";
             $pageID = $_GET['p']; // Get the unique page identifier.
             $query = "SELECT * FROM `pages` WHERE `unique-title` = $pageID";
@@ -36,6 +37,7 @@
                 echo "<h1 class='bigheader'>Hmm...</h1><p>You sure that page exists? I can't find it..</p>";
             }
             ?>
-        </div>
+            </div> <!-- End of text div -->
+        </div> <!-- End of wrapper -->
     </body>
 </html>

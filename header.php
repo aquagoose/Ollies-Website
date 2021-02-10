@@ -3,7 +3,7 @@
 <meta property="og:url" content="https://www.ollierobinson.co.uk/new-website/">
 <meta property="og:description" content="Ollie's Website. Shhhhhhhhhh......">
 <meta name="theme-color" content="#FFA500">
-<link rel="stylesheet" type="text/css" href="Styles/header.css">
+<link rel="stylesheet" type="text/css" href="/new-website/Styles/header.css">
 <div id="header">
     <div id="headerleft">
         <div id="himage"><img id="headerimage" src="https://rollbot.net/rewardbot/images/rewardBot%20logo.jpg" alt="Yes" /></div>

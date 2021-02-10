@@ -35,8 +35,12 @@ input {
     border: none;
 }
 
-input[type=submit] {
+input[type=submit], input[type=button].important {
     background-color: #FFA500;
+}
+
+input[type=button] {
+    background-color: gray;
 }
 
 #errortext {
@@ -66,4 +70,22 @@ input[type=submit] {
 a.topbarlink {
     color: white;
     padding: 10px 10px;
+}
+
+#editorjs {
+    color: black;
+    background-color: white;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.ce-block__content,
+.ce-toolbar__content {
+    max-width: 90%;
+}
+
+#text {
+    width: 50%;
+    min-width: 750px;
+    margin: 0px auto;
 }
