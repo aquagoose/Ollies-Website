@@ -15,7 +15,7 @@ body {
     /*padding: 5px;*/
     padding-top: 5px;
     font-size: 20px;
-    min-height: calc(100vh - 45px); /* 45px being the total padding top-bottom (10px, 5px top, 5px bottom) plus the height of the footer (35px) */
+    min-height: calc(100vh - 136px); /* 45px being the total padding top-bottom (10px, 5px top, 5px bottom) plus the height of the footer (35px) */
     box-sizing: border-box;
     border-radius: 20px;
 }
@@ -83,16 +83,32 @@ a.topbarlink {
     padding: 10px 10px;
 }
 
-#editorjs {
-    color: black;
-    background-color: white;
-    width: 100%;
-    border-radius: 20px;
-}
-
 .ce-block__content,
 .ce-toolbar__content {
     max-width: 90%;
+}
+
+.ce-toolbar__plus {
+    color: white;
+}
+
+.ce-inline-toolbar__dropdown, .ce-conversion-toolbar__tools {
+    color: black;
+}
+
+.ce-toolbar {
+    color: orange;
+    background-color: orange;
+}
+
+.ce-block--selected .ce-block__content {
+    color: black;
+    background: gray;
+}
+
+.ce-paragraph::selection, .ce-header::selection {
+    color: black;
+    background-color: gray;
 }
 
 #text {

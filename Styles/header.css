@@ -3,12 +3,22 @@
 /* HEADER */
 
 #header {
-    border-bottom: 5px solid black;
-    margin-bottom: 5px;
+    background-color: #151515;
+    margin: 5px;
+    /*padding: 5px;*/
+    padding-top: 5px;
+    font-size: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
 }
 
-#header.a {
-    font-size: 100px; /* I-uh.. What? */
+.headermainlink {
+    color: white;
+    text-decoration: none;
+}
+
+.headermainlink:hover {
+    text-decoration: none;
 }
 
 #headerleft {

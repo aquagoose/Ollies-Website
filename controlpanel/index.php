@@ -9,9 +9,9 @@ include "../redirect.php";
         <link rel="stylesheet" type="text/css" href="/new-website/Styles/main.css">
     </head>
     <body>
-        <?php include "../topbar.php"; ?>
+        <?php include "../topbar.php";
+        include "../header.php"; ?>
         <div id="wrapper"> <!-- Wraps around the webpage, the "frame" of it. -->
-            <?php include "../header.php" ?>
             <div id="text"> <!-- Where text is displayed -->
                 <a href="pages.php">Pages</a><br />
                 <a href="editor.php">Editor</a><br />

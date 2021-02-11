@@ -7,10 +7,10 @@
         <link rel="stylesheet" type="text/css" href="/new-website/Styles/main.css">
     </head>
     <body>
-        <?php include "../topbar.php"; ?>
+        <?php include "../topbar.php";
+        include "../header.php"; ?>
         <div id="wrapper">
             <?php
-            include "../header.php";
             $conn = include("../database.php");
             $result = $conn -> query("SELECT * FROM `pages`"); // Attempts to get all the pages listed in the DB.
             if ($result -> num_rows > 0) {

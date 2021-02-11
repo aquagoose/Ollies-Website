@@ -25,8 +25,9 @@ if (isset($_POST['username'])) { // Only runs if a username value exists.
         <link rel="stylesheet" type="text/css" href="/new-website/Styles/main.css">
     </head>
     <body>
+        <?php include "topbar.php";
+        include "header.php"; ?>
         <div id="wrapper">
-            <?php include "header.php" ?>
             <form method="POST" action="">
                 <input type="text" name="username" placeholder="Username" maxlength="20"><br />
                 <input type="password" name="password" placeholder="Password" maxlength="20"> <br />

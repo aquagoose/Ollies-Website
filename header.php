@@ -7,7 +7,7 @@
 <div id="header">
     <div id="headerleft">
         <div id="himage"><img id="headerimage" src="https://rollbot.net/rewardbot/images/rewardBot%20logo.jpg" alt="Yes" /></div>
-        <div id="htext"><div id="toptext">Ollie's Website</div><div id="bottomtext">It's a good day to make terrible websites.</div></div>
+        <div id="htext"><a class="headermainlink" href="/new-website/"><div id="toptext">Ollie's Website</div><div id="bottomtext">It's a good day to make terrible websites.</div></a></div>
     </div>
     <div id="headerright">
         <?php

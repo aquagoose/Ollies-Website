@@ -1,20 +1,25 @@
 <?php
 include "../redirect.php";
+$pageTitle = $_GET['ptitle'];
+if (empty($pageTitle)) $pageTitle = "Page Title Goes Here";
+$html = $_GET['html'];
+$h1 = "<h1 class='bigheader'>$pageTitle</h1>";
+$title = "[PREVIEW]$pageTitle - Ollie's Website";
 ?>
 
 <!DOCTYPE html>
 <html lang="en-GB">
     <head>
-        <title>Ollie's Website</title>
+        <title><?php echo $title; ?></title>
         <link rel="stylesheet" type="text/css" href="/new-website/Styles/main.css">
     </head>
     <body>
-        <?php include "../topbar.php"; ?>
+        <?php include "../topbar.php";
+        include "../header.php"; ?>
         <div id="wrapper"> <!-- Wraps around the webpage, the "frame" of it. -->
-            <?php include "../header.php" ?>
             <div id="text"> <!-- Where text is displayed -->
                 <?php
-                $html = $_GET['html'];
+                echo $h1;
                 echo $html;
                 ?>
             </div> <!-- End of text div -->

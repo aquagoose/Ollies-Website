@@ -39,13 +39,14 @@ else { // If the user enters some stinky page that doesn't exist, this gets disp
         <link rel="stylesheet" type="text/css" href="/new-website/Styles/main.css">
     </head>
     <body>
-        <?php include "topbar.php"; ?>
+        <?php include "topbar.php";
+        include "header.php"; ?>
         <div id="wrapper"> <!-- Wraps around the webpage, the "frame" of it. -->
-            <?php include "header.php"; ?>
             <div id="text"> <!-- Where text is displayed -->
                 <?php echo $content; ?> <!-- This might look like trash. Trust me. IT'S PHP's FAULT!!! -->
             </div> <!-- End of text div -->
         </div> <!-- End of wrapper -->
         <?php include "footer.php"; ?>
+        <script>console.log(document.getElementById("header").clientHeight)</script>
     </body>
 </html>
