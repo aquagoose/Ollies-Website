@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/Styles/header.css">
 <div id="header">
     <div id="headerleft">
-        <div id="himage"><img id="headerimage" src="/Resources/Images/snowflake.png" alt="Yes" /></div>
+        <div id="himage"><a href="/"><img id="headerimage" src="/Resources/Images/snowflake.png" alt="Yes" /></a></div>
         <div id="htext"><a class="headermainlink" href="/"><div id="toptext">Ollie's Website</div><div id="bottomtext">This is new.</div></a></div>
     </div>
     <div id="headerright">

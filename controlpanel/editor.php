@@ -54,50 +54,54 @@ if (isset($_GET['p'])) { // If no page ID is set, don't bother with anything bel
                 <input type="button" value="Preview" onclick="preview()">
                 <div id="editorjs"></div>
                 <script>
-                    let html = `<?php echo $html; ?>`;
-                    let editor;
+                    let html = `<?php echo $html; ?>`; // Predefine the HTML code the HTML interpreter will interpret.
+                    let editor; // Predefine the editor, too.
 
                     window.onload = async function() {
+                        // If a success signal has been outputted by PHP, immediately
+                        // refresh the page so that it removes the HTML and "save=true"
+                        // from the address bar. This prevents users from accidentally
+                        // overwriting their stuff if they refresh the page.
                         const success = "<?php echo $success; ?>";
                         if (success == "1") {
-                            window.location.href = window.location.href.split("?")[0] + "?p=<?php echo $pageID; ?>";
-                            alert("Saved successfully!");
+                            window.location.href = window.location.href.split("?")[0] + "?p=<?php echo $pageID; ?>"; // Keeps the page ID or nothing would load.
+                            alert("Saved successfully!"); // Send an alert out so people know it went well.
                         }
 
-                        editor = new EditorJS({
+                        editor = new EditorJS({ // Create a new Editor. (thanks editorjs)
                             holder: 'editorjs',
                             tools: {
                                 header: Header,
                                 linkTool: LinkTool,
                             },
-                            data: (html !== "") ? await ParseHtmlToEditorFormat(html) : {},
+                            data: (html !== "") ? await ParseHtmlToEditorFormat(html) : {}, // Pass the data into the tool.
                         });
                     }
 
                     async function saveContent() {
-                        const html = await ParseEditorToHtml(editor);
-                        const pageTitle = document.getElementById("pagetitle").value;
+                        const html = await ParseEditorToHtml(editor); // Get the HTML from the editor JSON.
+                        const pageTitle = document.getElementById("pagetitle").value; // Get the page title & unique ID from the boxes.
                         const uniqueTitle = document.getElementById("uniqueid").value;
 
-                        if (pageTitle == "" || uniqueTitle == "" || html == "") {
+                        if (pageTitle == "" || uniqueTitle == "" || html == "") { // Checks to make sure none of the values are blank. MySQL doesn't like it.
                             alert("Content fields cannot be blank.");
                             return;
                         }
-                        if (/\s/.test(uniqueTitle)) {
+                        if (/\s/.test(uniqueTitle)) { // Unique titles are the titles displayed in the address bar. They can't contain spaces for obvious reasons.
                             alert("Unique title field cannot contain spaces.");
                             return;
                         }
 
-                        let url = window.location.href;
-                        url += `&save=true&ptitle=${pageTitle}&utitle=${uniqueTitle}&html=${encodeURIComponent(html)}`;
-                        window.location.href = url;
+                        let url = window.location.href; // Get the current URL.
+                        url += `&save=true&ptitle=${pageTitle}&utitle=${uniqueTitle}&html=${encodeURIComponent(html)}`; // Append the titles & encoded HTML to the end of it.
+                        window.location.href = url; // Refresh the page, allowing the PHP to save the content.
                     }
 
-                    async function preview() {
+                    async function preview() { // Similar to saving, just without the checks, and loads a new page instead.
                         const html = await ParseEditorToHtml(editor);
                         const pageTitle = document.getElementById("pagetitle").value;
-                        document.title = `Editor - ${pageTitle} - Ollie's Website`;
-                        window.open(`preview.php?ptitle=${pageTitle}&html=${encodeURIComponent(html)}`, 'PreviewWindow').focus();
+                        document.title = `Editor - ${pageTitle} - Ollie's Website`; // Updates the page title.
+                        window.open(`preview.php?ptitle=${pageTitle}&html=${encodeURIComponent(html)}`, 'PreviewWindow').focus(); // Open a new preview window, or, refresh and focus on an already existing one.
                     }
                 </script>
             </div>

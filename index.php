@@ -48,6 +48,5 @@ else { // If the user enters some stinky page that doesn't exist, this gets disp
             </div> <!-- End of text div -->
         </div> <!-- End of wrapper -->
         <?php include "footer.php"; ?>
-    <script>console.log(document.getElementById("header").clientHeight)</script>
     </body>
 </html>

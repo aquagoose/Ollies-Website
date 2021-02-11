@@ -6,7 +6,7 @@ include "../redirect.php";
 <html lang="en-GB">
 <head>
     <title>Ollie's Website</title>
-    <link rel="stylesheet" type="text/css" href="/new-website/Styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/main.css">
 </head>
 <body>
 <?php include "../topbar.php"; ?>
