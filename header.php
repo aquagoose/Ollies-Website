@@ -1,13 +1,13 @@
 <meta property="og:title" content="Ollie's Website">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.ollierobinson.co.uk/new-website/">
-<meta property="og:description" content="Ollie's Website. Shhhhhhhhhh......">
+<meta property="og:url" content="https://www.ollierobinson.co.uk">
+<meta property="og:description" content="This is new.">
 <meta name="theme-color" content="#FFA500">
-<link rel="stylesheet" type="text/css" href="/new-website/Styles/header.css">
+<link rel="stylesheet" type="text/css" href="/Styles/header.css">
 <div id="header">
     <div id="headerleft">
-        <div id="himage"><img id="headerimage" src="https://rollbot.net/rewardbot/images/rewardBot%20logo.jpg" alt="Yes" /></div>
-        <div id="htext"><a class="headermainlink" href="/new-website/"><div id="toptext">Ollie's Website</div><div id="bottomtext">It's a good day to make terrible websites.</div></a></div>
+        <div id="himage"><img id="headerimage" src="/Resources/Images/snowflake.png" alt="Yes" /></div>
+        <div id="htext"><a class="headermainlink" href="/"><div id="toptext">Ollie's Website</div><div id="bottomtext">This is new.</div></a></div>
     </div>
     <div id="headerright">
         <?php

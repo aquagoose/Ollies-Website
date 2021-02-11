@@ -15,7 +15,7 @@ body {
     /*padding: 5px;*/
     padding-top: 5px;
     font-size: 20px;
-    min-height: calc(100vh - 136px); /* 45px being the total padding top-bottom (10px, 5px top, 5px bottom) plus the height of the footer (35px) */
+    min-height: calc(100vh - 140px); /* 140px is the height of the top margin (5px) + header (90px) + margin between header & wrapper (5px) + height of footer (35px) + margin between footer & wrapper (5px) */
     box-sizing: border-box;
     border-radius: 20px;
 }

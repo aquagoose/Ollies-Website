@@ -12,7 +12,7 @@ if (isset($_POST['username'])) { // Only runs if a username value exists.
     if ($result -> num_rows == 1) { // We're in!
         session_start();
         $_SESSION["username"] = $_REQUEST['username']; // Create a session cookie with the stored username
-        if (empty($redirectTo)) header("Location: /new-website/"); // Redirect to either the home page or the redirect location, whichever is set.
+        if (empty($redirectTo)) header("Location: /"); // Redirect to either the home page or the redirect location, whichever is set.
         else header("Location: $redirectTo");
     }
     else $errorMessage = "Incorrect username or password. Try again."; // Oops... Nah, not today friend.
@@ -22,11 +22,11 @@ if (isset($_POST['username'])) { // Only runs if a username value exists.
 <html lang="en-GB">
     <head>
         <title>Ollie's Website</title>
-        <link rel="stylesheet" type="text/css" href="/new-website/Styles/main.css">
+        <link rel="stylesheet" type="text/css" href="/Styles/main.css">
+        <link rel="shortcut icon" href="/Resources/Images/snowflake.png" type="image/x-icon" />
     </head>
     <body>
-        <?php include "topbar.php";
-        include "header.php"; ?>
+        <?php include "header.php"; ?>
         <div id="wrapper">
             <form method="POST" action="">
                 <input type="text" name="username" placeholder="Username" maxlength="20"><br />

@@ -36,7 +36,8 @@ else { // If the user enters some stinky page that doesn't exist, this gets disp
 <html lang="en-GB">
     <head>
         <title><?php echo $pageTitle; ?></title>
-        <link rel="stylesheet" type="text/css" href="/new-website/Styles/main.css">
+        <link rel="stylesheet" type="text/css" href="/Styles/main.css">
+        <link rel="shortcut icon" href="/Resources/Images/snowflake.png" type="image/x-icon" />
     </head>
     <body>
         <?php include "topbar.php";
@@ -47,6 +48,6 @@ else { // If the user enters some stinky page that doesn't exist, this gets disp
             </div> <!-- End of text div -->
         </div> <!-- End of wrapper -->
         <?php include "footer.php"; ?>
-        <script>console.log(document.getElementById("header").clientHeight)</script>
+    <script>console.log(document.getElementById("header").clientHeight)</script>
     </body>
 </html>

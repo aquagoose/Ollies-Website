@@ -36,7 +36,8 @@ if (isset($_GET['p'])) { // If no page ID is set, don't bother with anything bel
 <html lang="en-GB">
     <head>
         <title><?php echo $headerTitle ?></title>
-        <link rel="stylesheet" type="text/css" href="/new-website/Styles/main.css">
+        <link rel="stylesheet" type="text/css" href="/Styles/main.css">
+        <link rel="shortcut icon" href="/Resources/Images/snowflake.png" type="image/x-icon" />
         <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script> <!-- Scripts! SCRIPTS!  S C R I P T S ! -->
         <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
         <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script>

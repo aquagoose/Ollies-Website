@@ -2,7 +2,7 @@
 <html lang="en-GB">
     <head>
         <title>Database Error</title>
-        <link rel="stylesheet" type="text/css" href="Styles/main.css">
+        <link rel="stylesheet" type="text/css" href="/Styles/main.css">
     </head>
     <body>
         <div id="wrapper">
