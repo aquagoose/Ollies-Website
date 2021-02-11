@@ -6,21 +6,30 @@ $pageTitle = "";
 $uniqueTitle = "";
 $headerTitle = "Editor - Ollie's Website";
 $success = 0;
+$save = $_GET['save']; // Checks to see if the user wants to save or not.
+$saveButton = "Create";
 
 if (isset($_GET['p'])) { // If no page ID is set, don't bother with anything below.
     $pageID = $_GET['p'];
     $conn = include "../database.php";
+    $saveButton = "Update";
 
-    $save = $_GET['save']; // Checks to see if the user wants to save or not.
     if (isset($save) && $save == "true") {
         $setHtml = addslashes(urldecode($_GET['html'])); // Adds slashes & decodes the URL to readable HTML format.
-        $result = $conn -> query("UPDATE `pages` SET `unique-title`='". $_GET['utitle'] ."', `page-title`='". addslashes($_GET['ptitle']) ."', `body`='$setHtml' WHERE `pages`.`ID` = $pageID"); // Insert query into the database.
+        $stmt = $conn -> prepare("UPDATE `pages` SET `unique-title`=?, `page-title`=?, `body`=? WHERE `pages`.`ID` = ?");
+        $stmt -> bind_param("sssi", $_GET['utitle'], $_GET['ptitle'], $setHtml, $pageID);
+        $result = $stmt -> execute();
+        //$result = $conn -> query("UPDATE `pages` SET `unique-title`='". addslashes($_GET['utitle']) ."', `page-title`='". addslashes($_GET['ptitle']) ."', `body`='$setHtml' WHERE `pages`.`ID` = $pageID"); // Insert query into the database.
         if ($result) { // If there is success, set the success flag to 1.
             $success = 1;
         }
+        $stmt -> close();
     }
     else {
-        $result = $conn->query("SELECT * FROM `pages` WHERE `ID`=$pageID"); // This is only run if save is not true, as the page reloads twice, saves load on the database.
+        $stmt = $conn -> prepare("SELECT * FROM `pages` WHERE `ID`=?"); // This is only run if save is not true, as the page reloads twice, saves load on the database.
+        $stmt -> bind_param("i", $pageID);
+        $stmt -> execute();
+        $result = $stmt -> get_result();
         if ($result->num_rows == 1) { // There shouldn't be more than one of the page.
             $row = $result->fetch_assoc();
             $html = $row['body']; // Get the HTML data from the 'body' section of the db. This will be interpreted by javascript later.
@@ -28,7 +37,23 @@ if (isset($_GET['p'])) { // If no page ID is set, don't bother with anything bel
             $uniqueTitle = $row['unique-title'];
             $headerTitle = "Editor - $pageTitle - Ollie's Website";
         }
+        $stmt -> close();
     }
+    $conn -> close();
+}
+else if (isset($save) && $save == "true") {
+    $conn = include "../database.php";
+    $setHtml = addslashes(urldecode($_GET['html'])); // Adds slashes & decodes the URL to readable HTML format.
+    $stmt = $conn -> prepare("INSERT INTO `pages` (`ID`, `unique-title`, `page-title`, `home-page`, `body`) VALUES (NULL, ?, ?, 0, ?)");
+    $stmt -> bind_param("sss", $_GET['utitle'], $_GET['ptitle'], $setHtml);
+    $check = $stmt -> execute();
+    $result = $stmt -> get_result();
+    if ($check) {
+        $success = 1;
+        $pageID = $stmt -> insert_id; // Get the ID so it can be displayed.
+    }
+    $stmt -> close();
+    $conn -> close();
 }
 ?>
 
@@ -50,7 +75,7 @@ if (isset($_GET['p'])) { // If no page ID is set, don't bother with anything bel
             <div id="text">
                 <input id="pagetitle" type="text" placeholder="Page Title" value="<?php echo $pageTitle; ?>">
                 <input id="uniqueid" type="text" placeholder="Unique Title" value="<?php echo $uniqueTitle; ?>">
-                <input type="button" class="important" value="Save" onclick="saveContent()">
+                <input type="button" class="important" value="<?php echo $saveButton; ?>" onclick="saveContent()">
                 <input type="button" value="Preview" onclick="preview()">
                 <div id="editorjs"></div>
                 <script>
@@ -65,7 +90,7 @@ if (isset($_GET['p'])) { // If no page ID is set, don't bother with anything bel
                         const success = "<?php echo $success; ?>";
                         if (success == "1") {
                             window.location.href = window.location.href.split("?")[0] + "?p=<?php echo $pageID; ?>"; // Keeps the page ID or nothing would load.
-                            alert("Saved successfully!"); // Send an alert out so people know it went well.
+                            alert("<?php echo $saveButton."d"; ?> successfully!"); // Send an alert out so people know it went well.
                         }
 
                         editor = new EditorJS({ // Create a new Editor. (thanks editorjs)
@@ -93,7 +118,7 @@ if (isset($_GET['p'])) { // If no page ID is set, don't bother with anything bel
                         }
 
                         let url = window.location.href; // Get the current URL.
-                        url += `&save=true&ptitle=${pageTitle}&utitle=${uniqueTitle}&html=${encodeURIComponent(html)}`; // Append the titles & encoded HTML to the end of it.
+                        url += `${"<?php echo $pageID; ?>" == "" ? "?" : "&"}save=true&ptitle=${pageTitle}&utitle=${uniqueTitle}&html=${encodeURIComponent(html)}`; // Append the titles & encoded HTML to the end of it.
                         window.location.href = url; // Refresh the page, allowing the PHP to save the content.
                     }
 

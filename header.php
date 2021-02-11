@@ -12,7 +12,9 @@
     <div id="headerright">
         <?php
         $conn = require("database.php"); // Connect to the database.
-        $result = $conn -> query("SELECT ID, title, href FROM links"); // Query the links section from the database
+        $stmt = $conn -> prepare("SELECT ID, title, href FROM links"); // Query the links section from the database
+        $stmt -> execute();
+        $result = $stmt -> get_result();
         while ($row = $result -> fetch_assoc()) {
             $className = "menu"; // The default class name is "menu"
             if ($_SERVER['REQUEST_URI'] == $row['href']) {
@@ -20,6 +22,8 @@
             }
             echo "<a class=\"$className\" href=\"".$row['href']."\">".$row['title']."</a>"; // Echo the link.
         }
+        $stmt -> close();
+        $conn -> close();
         ?>
     </div> <!-- PHP generated stuff -->
 </div>

@@ -14,9 +14,12 @@ $content = "";
 $pageTitle = "";
 $conn = include "database.php";
 $pageID = $_GET['p']; // Get the unique page identifier.
-$query = "SELECT * FROM `pages` WHERE `unique-title` = $pageID";
+$query = "SELECT * FROM `pages` WHERE `unique-title` = ?";
 if (!$pageID) $query = "SELECT * FROM `pages` WHERE `home-page` = 1"; // If there is no ID, go to the homepage.
-$result = $conn -> query($query);
+$stmt = $conn -> prepare($query); // Prepare the query
+$stmt -> bind_param("s", addslashes($pageID)); // Insert the page ID..
+$stmt -> execute(); // Execute the statement
+$result = $stmt -> get_result(); // Fetch the result.
 if ($result -> num_rows == 1) {
     $row = $result -> fetch_assoc(); // Fetch the first available row.
     // This sets the title of the page in the head. If it's a homepage, just display the title.
@@ -25,11 +28,13 @@ if ($result -> num_rows == 1) {
     $content = "<h1 class='bigheader'>".$row['page-title']."</h1>\n".$row['body']; // The page title is displayed as a header. Then display the body.
 }
 else if ($result -> num_rows > 1) { // There shouldn't be more than one homepage..
-    $content = "<h1 class='bigheader'>What the..</h1><p>There appear to be two homepages. What.<br />Anyway that's a problem, there's only supposed to be one homepage......</p>";
+    $content = "<h1 class='bigheader'>What the..</h1><p>There appears to be more than one instance of that page... What.<br />Anyway that's a problem, there's only supposed to be one instance of each page...</p>";
 }
 else { // If the user enters some stinky page that doesn't exist, this gets displayed.
     $content = "<h1 class='bigheader'>Hmm...</h1><p>You sure that page exists? I can't find it..</p>";
 }
+$stmt -> close();
+$conn -> close();
 ?>
 
 <!DOCTYPE html>

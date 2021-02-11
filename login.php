@@ -8,7 +8,10 @@ if (isset($_POST['username'])) { // Only runs if a username value exists.
     $conn = include "database.php";
     $username = $conn -> real_escape_string(stripslashes($_REQUEST['username']));
     $password = $conn -> real_escape_string(stripslashes($_REQUEST['password']));
-    $result = $conn -> query("SELECT * FROM `users` WHERE username='$username' and password=PASSWORD('$password')"); // Attempt to find the user.
+    $stmt = $conn -> prepare("SELECT * FROM `users` WHERE username=? and password=PASSWORD(?)"); // Attempt to find the user.
+    $stmt -> bind_param("ss", $username, $password);
+    $stmt -> execute();
+    $result = $stmt -> get_result();
     if ($result -> num_rows == 1) { // We're in!
         session_start();
         $_SESSION["username"] = $_REQUEST['username']; // Create a session cookie with the stored username
@@ -16,6 +19,8 @@ if (isset($_POST['username'])) { // Only runs if a username value exists.
         else header("Location: $redirectTo");
     }
     else $errorMessage = "Incorrect username or password. Try again."; // Oops... Nah, not today friend.
+    $stmt -> close();
+    $conn -> close();
 }
 ?>
 <!DOCTYPE html>
