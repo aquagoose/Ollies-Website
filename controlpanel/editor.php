@@ -15,7 +15,7 @@ if (isset($_GET['p'])) { // If no page ID is set, don't bother with anything bel
     $saveButton = "Update";
 
     if (isset($save) && $save == "true") {
-        $setHtml = addslashes(urldecode($_GET['html'])); // Adds slashes & decodes the URL to readable HTML format.
+        $setHtml = urldecode($_GET['html']); // Adds slashes & decodes the URL to readable HTML format.
         $stmt = $conn -> prepare("UPDATE `pages` SET `unique-title`=?, `page-title`=?, `body`=? WHERE `pages`.`ID` = ?");
         $stmt -> bind_param("sssi", $_GET['utitle'], $_GET['ptitle'], $setHtml, $pageID);
         $result = $stmt -> execute();
@@ -43,7 +43,7 @@ if (isset($_GET['p'])) { // If no page ID is set, don't bother with anything bel
 }
 else if (isset($save) && $save == "true") {
     $conn = include "../database.php";
-    $setHtml = addslashes(urldecode($_GET['html'])); // Adds slashes & decodes the URL to readable HTML format.
+    $setHtml = urldecode($_GET['html']); // Adds slashes & decodes the URL to readable HTML format.
     $stmt = $conn -> prepare("INSERT INTO `pages` (`ID`, `unique-title`, `page-title`, `home-page`, `body`) VALUES (NULL, ?, ?, 0, ?)");
     $stmt -> bind_param("sss", $_GET['utitle'], $_GET['ptitle'], $setHtml);
     $check = $stmt -> execute();
@@ -99,7 +99,7 @@ else if (isset($save) && $save == "true") {
                                 header: Header,
                                 linkTool: LinkTool,
                             },
-                            data: (html !== "") ? await ParseHtmlToEditorFormat(html) : {}, // Pass the data into the tool.
+                            data: (html !== "") ? await ParseHtmlToEditorFormat(html) : {blocks:[{"type":"paragraph","data":{"text":"Remove this, and start typing here.."}}]}, // Pass the data into the tool.
                         });
                     }
 

@@ -4,7 +4,7 @@ if (include "checkauth.php") { ?>
 <script type="text/javascript">window.onload = function(){document.getElementById("wrapper").style.minHeight = `calc(100vh - ${140 + document.getElementById("topbar").clientHeight}px`;}</script>
 <div id="topbar">
     <div id="topbarleft">
-        <span>Hi <b><?php echo $_SESSION["username"]; ?>! 👋</b></span>
+        <span>Hi <b><?php echo $_SESSION["first-name"]; ?></b>! 👋</span>
     </div>
     <div id="topbarright">
         <?php

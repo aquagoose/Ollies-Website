@@ -13,8 +13,11 @@ if (isset($_POST['username'])) { // Only runs if a username value exists.
     $stmt -> execute();
     $result = $stmt -> get_result();
     if ($result -> num_rows == 1) { // We're in!
+        $row = $result -> fetch_assoc();
         session_start();
         $_SESSION["username"] = $_REQUEST['username']; // Create a session cookie with the stored username
+        $_SESSION["first-name"] = $row['first-name'];
+        $_SESSION["privledge-level"] = $row['privledge-level'];
         if (empty($redirectTo)) header("Location: /"); // Redirect to either the home page or the redirect location, whichever is set.
         else header("Location: $redirectTo");
     }
