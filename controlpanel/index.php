@@ -16,6 +16,7 @@ include "../redirect.php";
             <div id="text"> <!-- Where text is displayed -->
                 <span>Hi <b><?php echo $_SESSION['first-name']; ?></b>! 👋 You are privilege level <b><?php echo $_SESSION["privledge-level"]; ?></b></span><br />
                 <a href="pages.php">Pages</a><br />
+                <a href="menus.php">Menus</a>
             </div> <!-- End of text div -->
         </div> <!-- End of wrapper -->
         <?php include "../footer.php"; ?>
