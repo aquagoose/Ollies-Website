@@ -12,7 +12,7 @@
     <div id="headerright">
         <?php
         $conn = require("database.php"); // Connect to the database.
-        $stmt = $conn -> prepare("SELECT ID, title, href FROM links"); // Query the links section from the database
+        $stmt = $conn -> prepare("SELECT ID, title, href FROM links ORDER BY `links`.`link-order` ASC"); // Query the links section from the database
         $stmt -> execute();
         $result = $stmt -> get_result();
         while ($row = $result -> fetch_assoc()) {

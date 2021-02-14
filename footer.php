@@ -1,6 +1,6 @@
 <div id="footer">
     <div id="footerleft">
-        <div id="ftext"><div id="ftext">&copy; Ollie Robinson <?php echo date("Y") ?></div></div>
+        <div id="ftext"><div id="ftext">&copy; Ollie Robinson <a href="/2012" style="color: white">2012</a> - <?php echo date("Y") ?></div></div>
     </div>
     <div id="footerright">
         <a class="fsocialmedia" href="https://github.com/ohtrobinson/Ollies-Website" target="_blank"><img src="/Resources/Images/GitHub-Logo.png" height="32" width="32" alt="View source on GitHub" title="View source on GitHub"/></a>
