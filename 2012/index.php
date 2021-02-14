@@ -13,16 +13,7 @@
     <body>
         <div id="wrapper">
             <div id="header"><img src="images/header.jpg" alt="Ollie's Website!" /></div>
-            <div id="menu">
-                <a href="./" class="menulink">home</a> -
-                <a href="./" class="menulink">links</a> -
-                <a href="./" class="menulink">electrical</a> -
-                <a href="./" class="menulink">youtube</a> -
-                <a href="./" class="menulink">school</a> -
-                <a href="./photo.php" class="menulink">photos</a> -
-                <a href="./windows8.php" class="menulink">windows 8</a> -
-                <a href="./" class="menulink">twitter</a>
-            </div>
+            <?php include "./menu.php"; ?>
 
             <div id="content">
                 <h1>Welcome To My Website!</h1>

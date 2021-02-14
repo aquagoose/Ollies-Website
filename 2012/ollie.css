@@ -88,3 +88,13 @@ img.photo {
 	margin-left: 5px;
 	margin-top: 2px;
 }
+
+.centerlist {
+	margin: 0px auto;
+	text-align: center;
+}
+
+.ullist {
+	text-align: center;
+	display: inline-block;
+}
