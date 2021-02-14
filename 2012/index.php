@@ -19,8 +19,9 @@
                 <a href="./" class="menulink">electrical</a> -
                 <a href="./" class="menulink">youtube</a> -
                 <a href="./" class="menulink">school</a> -
-                <a href="./" class="menulink">photos</a> -
-                <a href="./" class="menulink">windows 8</a>
+                <a href="./photo.php" class="menulink">photos</a> -
+                <a href="./windows8.php" class="menulink">windows 8</a> -
+                <a href="./" class="menulink">twitter</a>
             </div>
 
             <div id="content">
